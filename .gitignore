@@ -1,7 +1,14 @@
-# Node modules (very heavy folder, should not be pushed)
+# Node modules (heavy)
 node_modules/
+
+# Environment files
 .env
-# Build output (created after npm run build)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
 build/
 
 # Logs
@@ -9,16 +16,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment files (for security)
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# OS-specific files
+# System-specific files
 .DS_Store
 
-# Vercel or Netlify files (optional)
+# Hosting platforms
 .vercel/
 .netlify/
