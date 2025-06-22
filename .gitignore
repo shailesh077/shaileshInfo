@@ -1,6 +1,6 @@
 # Node modules (very heavy folder, should not be pushed)
 node_modules/
-
+.env
 # Build output (created after npm run build)
 build/
 

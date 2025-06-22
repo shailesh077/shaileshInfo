@@ -17,10 +17,9 @@ function Footer() {
           
           <div className="flex space-x-4">
             {[
-              { icon: "fab fa-github", link: "#" },
-              { icon: "fab fa-linkedin", link: "#" },
-              { icon: "fab fa-twitter", link: "#" },
-              { icon: "fab fa-instagram", link: "#" }
+              { icon: "fab fa-github", link: "https://github.com/shailesh077" },
+              { icon: "fab fa-linkedin", link: "https://www.linkedin.com/in/shailesh9265/" },
+              { icon: "fab fa-instagram", link: "https://www.instagram.com/accounts/onetap/?next=%2F" }
             ].map((social, index) => (
               <motion.a 
                 key={index} 
