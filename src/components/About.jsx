@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Shailesh from "../assets/Shailesh.jpg";
+import Shailesh from "../assets/shailesh.jpg";
 import shaileshCV from "../../public/shailesh_cv.pdf";
 
 function About() {
