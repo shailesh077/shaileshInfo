@@ -1,51 +1,38 @@
-import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
+
+const socials = [
+  { Icon: FaGithub, label: "GitHub", link: "https://github.com/shailesh077" },
+  { Icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/in/shailesh9265/" },
+  { Icon: FaInstagram, label: "Instagram", link: "https://www.instagram.com/accounts/onetap/?next=%2F" },
+];
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8 border-t border-gray-800 relative">
-      <div className="container mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="flex flex-col md:flex-row justify-between items-center"
-        >
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold">Shailesh<span className="text-blue-400">Dev</span></h3>
-            <p className="text-gray-400 mt-1">Creating exceptional digital experiences</p>
-          </div>
-          
-          <div className="flex space-x-4">
-            {[
-              { icon: "fab fa-github", link: "https://github.com/shailesh077" },
-              { icon: "fab fa-linkedin", link: "https://www.linkedin.com/in/shailesh9265/" },
-              { icon: "fab fa-instagram", link: "https://www.instagram.com/accounts/onetap/?next=%2F" }
-            ].map((social, index) => (
-              <motion.a 
-                key={index} 
-                whileHover={{ y: -5, color: '#60a5fa' }}
-                href={social.link} 
-                className="hover:text-blue-400 transition-colors"
-                aria-label={`Social media link ${index + 1}`}
-              >
-                <i className={`${social.icon} text-xl`}></i>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="mt-8 pt-4 border-t border-gray-800 text-center text-gray-400 flex flex-col md:flex-row justify-between items-center"
-        >
-          <p>© {new Date().getFullYear()} Shailesh Vishwakarma. All rights reserved.</p>
-          <ul className="flex space-x-6 mt-4 md:mt-0">
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-          </ul>
-        </motion.div>
+    <footer className="relative border-t border-line">
+      <div className="container-x flex flex-col items-center justify-between gap-6 py-10 text-center md:flex-row md:text-left">
+        <div>
+          <p className="font-display text-xl font-bold tracking-tight">
+            shailesh<span className="text-gradient">.dev</span>
+          </p>
+          <p className="mt-1 text-sm text-muted">Creating exceptional digital experiences.</p>
+        </div>
+
+        <div className="flex gap-3">
+          {socials.map(({ Icon, label, link }) => (
+            <a
+              key={label}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="grid h-11 w-11 place-items-center rounded-full border border-line bg-surface text-muted transition hover:-translate-y-1 hover:border-a1 hover:text-fg"
+            >
+              <Icon size={17} />
+            </a>
+          ))}
+        </div>
+
+        <p className="text-sm text-faint">© {new Date().getFullYear()} Shailesh Vishwakarma. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,108 +1,93 @@
 import { motion } from "framer-motion";
-import { TbBrandTypescript } from "react-icons/tb";
+import { FaHtml5, FaCss3Alt, FaReact, FaGitAlt, FaNodeJs, FaPython, FaJs } from "react-icons/fa6";
+import { SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SectionHeading, reveal, spotlight } from "./shared";
+
+const skills = [
+  { name: "React", level: 92, Icon: FaReact, color: "#61dafb" },
+  { name: "JavaScript", level: 88, Icon: FaJs, color: "#f7df1e" },
+  { name: "HTML5", level: 90, Icon: FaHtml5, color: "#e34f26" },
+  { name: "CSS3", level: 85, Icon: FaCss3Alt, color: "#1572b6" },
+  { name: "Tailwind", level: 85, Icon: SiTailwindcss, color: "#06b6d4" },
+  { name: "Git", level: 80, Icon: FaGitAlt, color: "#f05032" },
+  { name: "Node.js", level: 75, Icon: FaNodeJs, color: "#339933" },
+  { name: "TypeScript", level: 50, Icon: SiTypescript, color: "#3178c6" },
+  { name: "Python", level: 30, Icon: FaPython, color: "#3776ab" },
+];
 
 function Skills() {
-  const skills = [
-    { name: "HTML5", level: 90, icon: "fab fa-html5", color: "#e34f26" },
-    { name: "CSS3", level: 85, icon: "fab fa-css3-alt", color: "#1572b6" },
-    { name: "JavaScript", level: 88, icon: "fab fa-js", color: "#f7df1e" },
-    { name: "React", level: 92, icon: "fab fa-react", color: "#61dafb" },
-    { name: "Tailwind", level: 85, icon: "fab fa-css3", color: "#06b6d4" },
-    { name: "Git", level: 80, icon: "fab fa-git-alt", color: "#f05032" },
-    { name: "Node.js", level: 75, icon: "fab fa-node-js", color: "#339933" },
-    { name: "Python", level: 30, icon: "fab fa-python", color: "#3776ab" },
-    {
-      name: "TypeScript",
-      level: 50,
-      icon: TbBrandTypescript,
-      color: "#3178c6",
-      type: "react",
-    },
-  ];
-
-  const renderIcon = (skill) => {
-    if (skill.type === "react") {
-      const IconComponent = skill.icon;
-      return (
-        <IconComponent className="text-2xl" style={{ color: skill.color }} />
-      );
-    }
-    return (
-      <i className={`${skill.icon} text-2xl`} style={{ color: skill.color }} />
-    );
-  };
-
-  const renderBackgroundIcon = (skill) => {
-    if (skill.type === "react") {
-      const IconComponent = skill.icon;
-      return <IconComponent className="text-6xl" />;
-    }
-    return <i className={`${skill.icon} text-6xl`} />;
-  };
-
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-600 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl" />
-      </div>{" "}
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <span className="text-blue-400 text-sm uppercase tracking-wider font-medium">
-            What I know{" "}
-          </span>{" "}
-          <h2 className="text-4xl font-bold mt-2 text-white"> My Skills </h2>{" "}
-          <div className="h-1 w-24 bg-blue-500 mx-auto mt-4" />
-        </motion.div>{" "}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          {" "}
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500 group transition-all duration-300 relative overflow-hidden"
+    <section id="skills" className="section">
+      <div className="aurora opacity-60" aria-hidden="true">
+        <span className="c !left-auto !right-0" />
+      </div>
+
+      <div className="container-x relative z-10">
+        <SectionHeading
+          eyebrow="skills"
+          title="The toolkit behind"
+          accent="every pixel."
+          text="Technologies I use daily to design, build and ship modern web products."
+        />
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map(({ name, level, Icon, color }, i) => (
+            <motion.article
+              key={name}
+              {...reveal((i % 3) * 0.08)}
+              onPointerMove={spotlight}
+              className="glass group p-5 sm:p-6"
             >
-              <div className="absolute right-0 bottom-0 opacity-5 text-gray-400 transform translate-x-1/4 translate-y-1/4 group-hover:opacity-10 transition-opacity duration-300">
-                {" "}
-                {renderBackgroundIcon(skill)}{" "}
-              </div>{" "}
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-lg bg-blue-900 flex items-center justify-center mr-4">
-                  {" "}
-                  {renderIcon(skill)}{" "}
-                </div>{" "}
-                <h3 className="text-xl font-bold text-white"> {skill.name} </h3>{" "}
-              </div>{" "}
-              <div className="mt-4">
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm text-gray-400"> Proficiency </span>{" "}
-                  <span className="text-sm font-medium text-blue-400">
-                    {" "}
-                    {skill.level} %
-                  </span>{" "}
-                </div>{" "}
-                <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full rounded-full"
-                    style={{ backgroundColor: skill.color }}
-                  />{" "}
-                </div>{" "}
-              </div>{" "}
-            </motion.div>
-          ))}{" "}
-        </div>{" "}
-      </div>{" "}
+              <div className="flex items-center gap-4">
+                <span
+                  className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-line transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                  style={{ background: `${color}1f` }}
+                >
+                  <Icon size={24} style={{ color }} aria-hidden="true" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display text-lg font-semibold tracking-tight">{name}</h3>
+                  <p className="font-mono text-xs text-faint">
+                    {level >= 85 ? "Expert" : level >= 70 ? "Advanced" : level >= 45 ? "Intermediate" : "Learning"}
+                  </p>
+                </div>
+                <span className="font-mono text-sm text-muted">{level}%</span>
+              </div>
+
+              <div
+                className="mt-5 h-1.5 overflow-hidden rounded-full bg-line"
+                role="progressbar"
+                aria-label={`${name} proficiency`}
+                aria-valuenow={level}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              >
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.2 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full rounded-full"
+                  style={{ background: `linear-gradient(90deg, ${color}, var(--accent-2))` }}
+                />
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Marquee */}
+        <div className="marquee mt-14" aria-hidden="true">
+          {[0, 1].map((n) => (
+            <div key={n} className="marquee-track">
+              {skills.map(({ name, Icon, color }) => (
+                <span key={name} className="chip !px-4 !py-2 !text-sm">
+                  <Icon style={{ color }} /> {name}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
